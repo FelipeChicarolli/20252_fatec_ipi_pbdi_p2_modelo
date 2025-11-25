@@ -12,28 +12,41 @@ EXERCÍCIO 2 (PL/pgSQL)
 CRIAÇÃO DAS TABELAS DIMENSÃO
 
 DROP TABLE dim_jogos;
-CREATE TABLE IF EXISTS dim_jogos (
+CREATE TABLE IF NOT EXISTS dim_jogos (
 id_jogo INTEGER PRIMARY KEY,
-nome_jogo VARCHAR (20),
-genero VARCHAR (20),
+nome_jogo VARCHAR (200),
+genero VARCHAR (200),
 ano INT
 ); 
 
 DROP TABLE dim_plataforma;
-CREATE TABLE IF EXISTS dim_plataforma (
+CREATE TABLE IF NOT EXISTS dim_plataforma (
 id_plataforma INTEGER PRIMARY KEY,
-nome_plataforma VARCHAR (20)
+nome_plataforma VARCHAR (200)
 ); 
 
 DROP TABLE dim_published
-CREATE TABLE IF EXISTS dim_publisher (
+CREATE TABLE IF NOT EXISTS dim_publisher (
 id_publisher INTEGER PRIMARY KEY, 
-nome_publisher VARCHAR (20)
+nome_publisher VARCHAR (200)
 ); 
 
 ===========================
 EXERCÍCIO 3 (PL/pgSQL)
 CRIAÇÃO DA TABELA FATO
+
+DROP TABLE fato_vendas;
+CREATE TABLE IF NOT EXISTS fato vendas (
+id_venda SERIAL PRIMARY KEY,
+id_jogo INTEGER REFERENCES dim_jogos(id_jogo),
+id_plataforma INTEGER REFERENCES dim_plataforma(id_plataforma),
+id_publisher  INTEGER REFERENCES dim_publisher (id_publisher), 
+vendas_NA NUMERIC(100,2),
+vendas_EU NUMERIC(100,2), 
+vendas_JP NUMERIC(100,2),
+vendas_global NUMERIC(100,2),
+vendas_other NUMERIC(100,2)
+); 
 
 ===========================
 EXERCÍCIO 4 (PYTHON)
