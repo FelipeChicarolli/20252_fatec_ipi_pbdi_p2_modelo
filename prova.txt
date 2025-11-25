@@ -36,7 +36,7 @@ EXERCÍCIO 3 (PL/pgSQL)
 CRIAÇÃO DA TABELA FATO
 
 DROP TABLE fato_vendas;
-CREATE TABLE IF NOT EXISTS fato vendas (
+CREATE TABLE IF NOT EXISTS fato_vendas (
 id_venda SERIAL PRIMARY KEY,
 id_jogo INTEGER REFERENCES dim_jogos(id_jogo),
 id_plataforma INTEGER REFERENCES dim_plataforma(id_plataforma),
