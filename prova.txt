@@ -62,6 +62,18 @@ print(df.head())
 EXERCÍCIO 5 (PYTHON)
 TRANSFORMAÇÕES NECESSÁRIAS, INCLUINDO GERAÇÃO DE CHAVES
 
+milhao = 1_000_000
+
+df["vendas_NA"] = pd.to_numeric(df["NA_Sales"], errors='coerce').fillna(0) * milhao
+df["vendas_EU"] = pd.to_numeric(df["EU_Sales"], errors='coerce').fillna(0) * milhao
+df["vendas_JP"] = pd.to_numeric(df["JP_Sales"], errors='coerce').fillna(0) * milhao
+df["vendas_other"] = pd.to_numeric(df["Other_Sales"], errors='coerce').fillna(0) * milhao
+df["vendas_global"] = pd.to_numeric(df["Global_Sales"], errors='coerce').fillna(0) * milhao
+
+df["id_jogo"] = df["Name"].astype('category').cat.codes + 1
+df["id_plataforma"] = df["Platform"].astype('category').cat.codes + 1
+df["id_publisher"] = df["Publisher"].astype('category').cat.codes + 1
+
 ===========================
 EXERCÍCIO 6 (PYTHON)
 CONEXÃO COM O BANCO (PYTHON)
