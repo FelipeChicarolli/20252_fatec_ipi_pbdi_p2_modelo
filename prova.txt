@@ -33,6 +33,12 @@ TRANSFORMAÇÕES NECESSÁRIAS, INCLUINDO GERAÇÃO DE CHAVES
 EXERCÍCIO 6 (PYTHON)
 CONEXÃO COM O BANCO (PYTHON)
 
+conn = psycopg2.connect(
+host="localhost", database="provap2",
+user="postgres", password="123456"
+)
+cur = conn.cursor()
+
 ===========================
 EXERCÍCIO 7 (PYTHON)
 CADASTRO DE DIMENSÕES
