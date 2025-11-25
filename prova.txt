@@ -11,6 +11,26 @@ CREATE DATABASE "provap2";
 EXERCÍCIO 2 (PL/pgSQL)
 CRIAÇÃO DAS TABELAS DIMENSÃO
 
+DROP TABLE dim_jogos;
+CREATE TABLE IF EXISTS dim_jogos (
+id_jogo INTEGER PRIMARY KEY,
+nome_jogo VARCHAR (20),
+genero VARCHAR (20),
+ano INT
+); 
+
+DROP TABLE dim_plataforma;
+CREATE TABLE IF EXISTS dim_plataforma (
+id_plataforma INTEGER PRIMARY KEY,
+nome_plataforma VARCHAR (20)
+); 
+
+DROP TABLE dim_published
+CREATE TABLE IF EXISTS dim_publisher (
+id_publisher INTEGER PRIMARY KEY, 
+nome_publisher VARCHAR (20)
+); 
+
 ===========================
 EXERCÍCIO 3 (PL/pgSQL)
 CRIAÇÃO DA TABELA FATO
