@@ -117,3 +117,21 @@ ON CONFLICT (id_publisher) DO NOTHING;
 ===========================
 EXERCÍCIO 8 (PYTHON)
 CADASTRO DE DADOS NA TABELA FATO
+
+fato = df[
+["id_jogo ", "id_plataforma",
+"id_publisher", "NA_Sales", "EU_Sales", "JP_Sales", "Global_Sales", "Other_Sales"]
+]
+for _, row in fato.iterrows():
+cur.execute("""
+INSERT INTO fato_vendas
+(id_venda, id_jogo, id_plataforma, id_publisher, 
+vendas_NA, vendas_EU, vendas_JP, vendas_global, vendas_other)
+VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);
+""",
+(
+row["id_venda"], row["id_jogo"], row["id_plataforma"], 
+row["id_publisher"], 
+row["NA_Sales"], row["EU_Sales"],
+row["JP_Sales"], row["Global_Sales"], row["Other_Sales"]
+))
