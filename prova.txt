@@ -19,6 +19,12 @@ CRIAÇÃO DA TABELA FATO
 EXERCÍCIO 4 (PYTHON)
 CARGA DO ARQUIVO CSV COM PANDAS
 
+import pandas as pd
+import psycopg2
+
+df = pd.read_csv("data/vgsales.csv")
+print(df.head())
+
 ===========================
 EXERCÍCIO 5 (PYTHON)
 TRANSFORMAÇÕES NECESSÁRIAS, INCLUINDO GERAÇÃO DE CHAVES
