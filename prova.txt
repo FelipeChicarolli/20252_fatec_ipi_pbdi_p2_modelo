@@ -25,7 +25,7 @@ id_plataforma INTEGER PRIMARY KEY,
 nome_plataforma VARCHAR (200)
 ); 
 
-DROP TABLE dim_published
+DROP TABLE dim_publisher
 CREATE TABLE IF NOT EXISTS dim_publisher (
 id_publisher INTEGER PRIMARY KEY, 
 nome_publisher VARCHAR (200)
@@ -87,6 +87,32 @@ cur = conn.cursor()
 ===========================
 EXERCÍCIO 7 (PYTHON)
 CADASTRO DE DIMENSÕES
+
+dim_jogos = df[["id_jogo", "Name"]].drop_duplicates()
+for _, row in dim_jogos.iterrows():
+cur.execute("""
+INSERT INTO dim_jogos (id_jogo, nome_jogo, genero, ano)
+VALUES (%s, %s, %s, %s)
+ON CONFLICT (id_jogo) DO NOTHING;
+""", (row["id_jogo"], row["Name"]))
+ 
+ 
+dim_plataforma =  df[["id_plataforma", "Platform"]].drop_duplicates()
+for _, row in dim_plataforma.iterrows():
+cur.execute("""
+INSERT INTO dim_plataforma (id_plataforma, nome_plataforma)
+VALUES (%s, %s)
+ON CONFLICT (id_plataforma) DO NOTHING;
+""", (row["id_plataforma"], row["Platform"]))
+ 
+ 
+dim_publisher = df[["id_publisher", "Publisher"]].drop_duplicates()
+for _, row in dim_publisher.iterrows():
+cur.execute("""
+INSERT INTO dim_publisher (id_publisher, nome_publisher)
+VALUES (%s, %s)
+ON CONFLICT (id_publisher) DO NOTHING;
+""", (row["id_publisher"], row["Publisher"]))
 
 ===========================
 EXERCÍCIO 8 (PYTHON)
