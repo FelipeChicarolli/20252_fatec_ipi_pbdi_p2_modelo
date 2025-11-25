@@ -7,8 +7,8 @@
 
 | Nome completo | RA |
 |:--------------|:---|
-|                |     |
-|                |     |
+|Felipe Chicarolli dos Santos|2041382421024|
+|Jefferson de Carvalho Quintilhano|2041382421032|
 |                |     |
 |                |     |
 |                |     |
